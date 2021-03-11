@@ -14,15 +14,15 @@ int main(){
 	char** dict; dict=(char **)malloc(4096*sizeof(char *));
 	for(i=0;i<4096;i++) dict[i]=(char *)malloc(4096*sizeof(char));
 	
-	char n[1]; n[0]='0'; // Íóëåâîé ýëåìåíò ïðåäóñìàòðèâàåòñÿ äëÿ äåêîäèðîâàíèÿ
+	char n[1]; n[0]='0'; // ÃÃ³Ã«Ã¥Ã¢Ã®Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² Ã¯Ã°Ã¥Ã¤Ã³Ã±Ã¬Ã Ã²Ã°Ã¨Ã¢Ã Ã¥Ã²Ã±Ã¿ Ã¤Ã«Ã¿ Ã¤Ã¥ÃªÃ®Ã¤Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¿
 	strcpy(dict[0], n); //printf("%s\n\n", dict[0]);
 	i=1;
-	while(fscanf(fp, "%s", dict[i])==1) i++;    // Ñ÷èòàë èìåþùèéñÿ ñëîâàðü
+	while(fscanf(fp, "%s", dict[i])==1) i++;    // Ã‘Ã·Ã¨Ã²Ã Ã« Ã¨Ã¬Ã¥Ã¾Ã¹Ã¨Ã©Ã±Ã¿ Ã±Ã«Ã®Ã¢Ã Ã°Ã¼
 	int d_size=27;
 	
 	/*int* bit; bit=(int *)malloc(24*sizeof(int));
 	bit = bit_mas_create(bit, 16 , 1);
-	for(i=0;i<24;i++) printf("%d", bit[i]);                     // ÏÐÎÂÅÐÊÀ ÔÓÍÊÖÈÉ
+	for(i=0;i<24;i++) printf("%d", bit[i]);                     // ÃÃÃŽÃ‚Ã…ÃÃŠÃ€ Ã”Ã“ÃÃŠÃ–ÃˆÃ‰
 	printf("\n");
 	byte_create(bit);*/
 	
@@ -42,20 +42,29 @@ int main(){
 	num=compare(W, dict, d_size);
 	
 	while(fscanf(A, "%c", &W[w_kol])==1){
-		W[w_kol+1]='\0';			 						printf("W - %s\n", W);
+		W[w_kol+1]='\0';			 						
+		printf("W - %s\n", W);
 		
-		nt=compare(W, dict, d_size); 						printf("nt - %d\nd_size - %d\n", nt, d_size);
+		nt=compare(W, dict, d_size); 						
+		printf("nt - %d\nd_size - %d\n", nt, d_size);
 				
 		if(nt<d_size){
 			num=nt;
-			w_kol++; 										printf("w_kol - %d\n", w_kol);
+			w_kol++; 										
+			printf("w_kol - %d\n", w_kol);
 		}
 		
 		if(nt==d_size){
-			temp[flag]=num; 								printf("++temp[%d] = %d\n", flag, temp[flag]);
+			temp[flag]=num; 								
+			printf("++temp[%d] = %d\n", flag, temp[flag]);
 			flag++;
 			if(flag==2){
-				bit=bit_mas_create(bit, temp[0], temp[1]);  for(i=0;i<12;i++) printf("%d", bit[i]); printf("_"); for(i=12;i<24;i++) printf("%d", bit[i]); printf("\n"); printf("----exit 1) %d\n----exit 2) %d\n", temp[0], temp[1]);
+				bit=bit_mas_create(bit, temp[0], temp[1]);  
+				for(i=0;i<12;i++) printf("%d", bit[i]); 
+				printf("_"); 
+				for(i=12;i<24;i++) printf("%d", bit[i]); 
+				printf("\n"); 
+				printf("----exit 1) %d\n----exit 2) %d\n", temp[0], temp[1]);
 				byte_create(bit, B);
 				flag=0;
 			}
@@ -75,12 +84,14 @@ int main(){
 	
 	if(flag==1){
 		temp[1]=num;
-		bit=bit_mas_create(bit, temp[0], temp[1]);  		printf("----exit 1) %d\n----exit 2) %d\n", temp[0], temp[1]);
+		bit=bit_mas_create(bit, temp[0], temp[1]);  		
+		printf("----exit 1) %d\n----exit 2) %d\n", temp[0], temp[1]);
 		byte_create(bit, B);
 	}
 	
 	if(flag==0){
-		bit=bit_mas_create(bit, num, 0);  					printf("----exit 1) %d\n----exit 2) %d\n", num, 0);
+		bit=bit_mas_create(bit, num, 0);  					
+		printf("----exit 1) %d\n----exit 2) %d\n", num, 0);
 		byte_create(bit, B);
 	}
 	
@@ -130,7 +141,8 @@ void byte_create(int* bit, FILE *B){
 		}
 	}
 	fwrite(byte, sizeof(char), 3, B);
-	for(i=0;i<3;i++) 										printf("------------------------%d(%c)\n", byte[i], byte[i]); printf("\n");
+	for(i=0;i<3;i++) 										
+		printf("------------------------%d(%c)\n", byte[i], byte[i]); printf("\n");
 }
 
 int compare(char* W, char** dict, int d_size){
