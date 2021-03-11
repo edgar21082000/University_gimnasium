@@ -1,0 +1,6 @@
+# sam loop
+t = t + 0.02
+outfile = sprintf('animation/sam%03.0f.png',50*t)
+set output outfile
+splot x(u,v,t),y(u,v,t),x(u,v,t) w pm3d ls 1
+if (t<end_time) reread;
